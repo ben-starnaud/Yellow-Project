@@ -17,7 +17,7 @@ if not os.path.exists("uploads"):
 origins = [
     "http://localhost:9000", 
     "http://127.0.0.1:9000",
-    "http://192.168.0.110:9000",
+    "http://192.168.0.110:9000", # my personal IP address for testing on other devices
 ]
 
 app.add_middleware(

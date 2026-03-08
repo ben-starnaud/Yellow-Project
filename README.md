@@ -30,6 +30,7 @@ DB_PASSWORD=your_secure_password
 DB_NAME=yellow_loan_db
 
 ```
+* Note: Normally l would never share these credentials, but since this is a demo project, I have included them here for ease of testing. 
 
 ### 3. Launch the System
 

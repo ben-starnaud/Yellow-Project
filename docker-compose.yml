@@ -38,7 +38,7 @@ services:
         - "9000:9000"
       volumes:
         - ./frontend:/app           # Syncs your UI code changes instantly
-        - /app/node_modules         # PROTECTS the Linux binaries from host conflicts
+        - /app/node_modules 
       depends_on:
         - backend
 
