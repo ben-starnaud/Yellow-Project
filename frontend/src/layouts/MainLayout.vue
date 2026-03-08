@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-// No extra logic needed for the basic layout header
+
 </script>
 
 <style lang="scss">

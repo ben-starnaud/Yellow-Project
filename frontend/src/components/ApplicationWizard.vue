@@ -163,7 +163,6 @@ const handleEligibility = () => {
   const fullYear = yearDigits <= currentYear ? 2000 + yearDigits : 1900 + yearDigits
   const age = new Date().getFullYear() - fullYear
   
-  // Risk Scoring: 18-30 (1), 31-50 (2), 51-65 (3)
   let riskKey = "1"
   if (age >= 31 && age <= 50) riskKey = "2"
   else if (age > 50) riskKey = "3"
@@ -210,14 +209,14 @@ const validateSAID = async (val) => {
   }
   if ((nCheck % 10) !== 0) return 'Invalid ID checksum'
 
-  // 3. Age Check (18-65)
+  // 3. Age Check 
   const yearDigits = parseInt(val.substring(0, 2))
   const currentYear = new Date().getFullYear() % 100
   const fullYear = yearDigits <= currentYear ? 2000 + yearDigits : 1900 + yearDigits
   const age = new Date().getFullYear() - fullYear
   if (age < 18 || age > 65) return 'Age must be 18-65'
 
-  // 4. Remote Uniqueness Check via the new Service
+  // 4. Remote Uniqueness Check 
   try {
     const data = await applicationService.checkIdStatus(val)
     if (data.exists) return 'An application with this ID already exists'

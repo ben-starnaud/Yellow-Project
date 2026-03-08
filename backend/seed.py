@@ -2,7 +2,7 @@ import asyncio
 from decimal import Decimal
 from db.db import async_session, engine, Base
 from models.models import Product, RiskProfile
-import models.models # Ensure models are tracked
+import models.models
 
 async def seed_data():
     # Create tables first if they don't exist
@@ -13,9 +13,9 @@ async def seed_data():
         async with session.begin():
             # 1. Create Risk Profiles
             profiles = [
-                RiskProfile(risk_group=1, interest_rate_modifier=0.20, required_deposit_percent=0.15),
-                RiskProfile(risk_group=2, interest_rate_modifier=0.15, required_deposit_percent=0.10),
-                RiskProfile(risk_group=3, interest_rate_modifier=0.10, required_deposit_percent=0.05),
+                RiskProfile(risk_group=1, interest_rate_modifier=0.20, required_deposit_percent=0.20),
+                RiskProfile(risk_group=2, interest_rate_modifier=0.15, required_deposit_percent=0.20),
+                RiskProfile(risk_group=3, interest_rate_modifier=0.10, required_deposit_percent=0.20),
             ]
             
             # 2. Create Products

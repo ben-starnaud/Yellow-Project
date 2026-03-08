@@ -37,7 +37,7 @@ services:
       ports:
         - "9000:9000"
       volumes:
-        - ./frontend:/app           # Syncs your UI code changes instantly
+        - ./frontend:/app           # Syncs UI code changes instantly
         - /app/node_modules 
       depends_on:
         - backend

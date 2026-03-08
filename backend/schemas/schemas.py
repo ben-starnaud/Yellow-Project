@@ -4,13 +4,15 @@ from typing import List, Dict, Optional
 
 from pydantic import BaseModel, Field
 
-class PricingTier(BaseModel):
+# Fast Api docs were a bit funky so added example/s to simpify reading the docs 
 
+class PricingTier(BaseModel):
     final_cash_price: Decimal = Field(..., examples=["15000.00"])
     final_interest_rate: Decimal = Field(..., examples=["0.15"])
     loan_principal: Decimal = Field(..., examples=["12000.00"])
     daily_payment: Decimal = Field(..., examples=["45.50"])
 
+# Response schema for the /products/list-products endpoint
 class ProductResponse(BaseModel):
     id: int
     brand: str = Field(..., examples=["Apple"])
@@ -22,6 +24,7 @@ class ProductResponse(BaseModel):
     
     model_config = ConfigDict(from_attributes=True)
 
+# Response Scheme for the /applications/apply endpoint
 class ApplicationResponse(BaseModel):
     message: str
     application_id: int

@@ -13,15 +13,16 @@ class Product(Base):
     stock_level = Column(Integer, default=0)
     model_image = Column(Text, nullable=True)
     
+    # Products can have many contracts (product.contracts)
     contracts = relationship("LoanContract", back_populates="product")
 
 class RiskProfile(Base):
     __tablename__ = "risk_profiles"
 
     id = Column(Integer, primary_key=True)
-    risk_group = Column(Integer, unique=True) # 1, 2, or 3
-    interest_rate_modifier = Column(Float, nullable=False) # e.g. 0.15
-    required_deposit_percent = Column(Float, nullable=False) # e.g. 0.10
+    risk_group = Column(Integer, unique=True) 
+    interest_rate_modifier = Column(Float, nullable=False) 
+    required_deposit_percent = Column(Float, nullable=False) 
 
 class Application(Base):
     __tablename__ = "applications"
@@ -44,7 +45,6 @@ class LoanContract(Base):
     application_id = Column(Integer, ForeignKey("applications.id"), unique=True)
     product_id = Column(Integer, ForeignKey("products.id"))
     
-    # Snapshot Fields (Copying data at time of creation)
     final_cash_price = Column(Numeric(10, 2))
     final_interest_rate = Column(Float)
     loan_principal = Column(Numeric(10, 2))

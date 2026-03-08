@@ -63,7 +63,6 @@ defineEmits(['apply'])
 const lowestPrice = computed(() => {
   if (!props.product || !props.product.pricing_tiers) return '0.00'
   
-  // Access key "3" (Risk Group 3) directly from the Object
   const tiers = props.product.pricing_tiers
   const tier3 = tiers["3"] || tiers["1"]
   

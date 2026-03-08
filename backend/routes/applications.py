@@ -16,18 +16,18 @@ router = APIRouter(prefix="/applications", tags=["Applications"])
 
 UPLOAD_DIR = "uploads"
 
-# In your applications router file
 @router.get("/check-id/{id_number}")
 async def check_id_exists(id_number: str, db: AsyncSession = Depends(get_db)):
-    """Check if an ID number has already been used in an application."""
+    # Check if an ID number has already been used in an application
     query = await db.execute(select(Application).where(Application.id_number == id_number))
     exists = query.scalars().first() is not None
     return {"exists": exists}
 
+
 @router.post("/apply", response_model = ApplicationResponse)
 async def create_loan_application(
     full_name: str = Form(...),
-    id_number: str = Form(..., min_length=13, max_length=13),  # SA ID numbers are 13 digits
+    id_number: str = Form(..., min_length=13, max_length=13),  
     monthly_income: float = Form(...),
     phone_id: int = Form(...),
     proof_of_income: UploadFile = File(...),

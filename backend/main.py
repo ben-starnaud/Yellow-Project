@@ -5,7 +5,7 @@ import os
 from db.db import engine, Base
 from routes.products import router as product_router
 from routes.applications import router as app_router
-import models.models # This MUST be imported so Base knows the tables
+import models.models 
 
 app = FastAPI(title="Yellow API")
 

@@ -42,5 +42,4 @@ async def get_products(db: AsyncSession = Depends(get_db)):
             
         results.append(product_data)
     
-    print(f"DEBUG: Found {len(results)} products") # Add this
     return results

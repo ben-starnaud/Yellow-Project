@@ -1,10 +1,10 @@
-# Use a slim Python image for smaller size
+# Use a slim Python image 
 FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies needed for Postgres (libpq)
+# Install system dependencies 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     gcc \
