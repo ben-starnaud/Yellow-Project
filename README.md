@@ -38,7 +38,7 @@ Navigate to the project root and run:
 
 ```bash
 docker-compose up --build
-
+docker exec -it yellow_backend python seed.py (once the database is running sucessfully)
 ```
 
 * **Frontend**: Accessible at `http://localhost:9000` (or `http://YOUR_IP:9000` for mobile testing).
