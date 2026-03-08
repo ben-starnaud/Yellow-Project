@@ -25,9 +25,11 @@ The application is fully containerized. The frontend communicates with the FastA
 Create a `.env` file in the root directory (refer to the `.gitignore` to ensure this stays local) with the following variables:
 
 ```env
-DB_USER=yellow_user
-DB_PASSWORD=your_secure_password
-DB_NAME=yellow_loan_db
+DB_USER=yellow_admin
+DB_PASSWORD=yellow_secure_pass
+DB_NAME=yellow_db
+DB_HOST=db
+DB_PORT=5432
 
 ```
 * Note: Normally l would never share these credentials, but since this is a demo project, I have included them here for ease of testing. 
