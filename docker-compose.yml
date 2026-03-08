@@ -1,0 +1,46 @@
+services:
+
+
+
+  db:                                         # Using the Postgres image from Docker Hub as my database service
+    image: postgres:15
+    container_name: yellow_postgres
+    restart: always                           # Automatically restarts the container if it crashes
+    env_file: .env                             # Makes those variables available inside the container's environment.
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: yellow_backend
+    restart: always
+    ports:                                 
+      - "8000:8000"
+    env_file: .env
+    depends_on:                            # Start the backend service only after the db service is up and running
+      - db
+    volumes:
+      - ./backend:/app
+      - ./backend/uploads:/app/uploads
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  frontend:
+      build: ./frontend
+      container_name: yellow_frontend
+      restart: always
+      ports:
+        - "9000:9000"
+      volumes:
+        - ./frontend:/app           # Syncs your UI code changes instantly
+        - /app/node_modules         # PROTECTS the Linux binaries from host conflicts
+      depends_on:
+        - backend
+
+volumes:
+  postgres_data:

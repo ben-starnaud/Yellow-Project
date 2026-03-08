@@ -1,0 +1,37 @@
+# --- General ---
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.log
+*.tmp
+*.env
+*__pycache__
+
+# --- Backend (Python/FastAPI) ---
+backend/__pycache__/
+backend/*.py[cod]
+backend/venv/
+backend/.env
+backend/.pytest_cache/
+
+# --- Application Data (Critical) ---
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Do not track the local SQLite database file (if using one)
+backend/*.db
+backend/*.sqlite3
+
+# --- Frontend (Node/Quasar) ---
+frontend/node_modules/
+frontend/dist/
+frontend/.quasar/
+frontend/.env
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.eslintcache
+
+# --- Docker ---
+.docker/
